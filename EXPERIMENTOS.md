@@ -56,16 +56,4 @@
 
 ---
 
-## EXP-002 — Backscatter + Coherencia
-**Fecha:** pendiente
-**Estado:** ⏳ Planificado
-**Objetivo:** ¿Mejora la coherencia la separación Cotton-Tomato?
 
-### Hipótesis
-La coherencia temporal distingue mejor Cotton de Tomato
-en épocas 0-25 donde el backscatter no los separa.
-
-### Configuración prevista
-- Features: VV + VH + COH_VV + COH_VH (4 canales)
-- Baseline coherencia: 6 días
-- Resto igual que EXP-001
