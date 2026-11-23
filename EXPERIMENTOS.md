@@ -95,24 +95,4 @@
 - Diferencia metodológica (TEST separado) explica el gap de precisión
   en niveles bajos y el mejor recall en niveles altos
 
-### Pendiente
-- [x] Resultados niveles 15%, 20%, 25%, 30%
-- [ ] Tests estadísticos Wilcoxon CAE vs RF
-- [ ] Figuras curvas recall/precisión vs nivel de ruido
-- [ ] EXP-002: backscatter + coherencia
 
----
-
-## EXP-002 — Backscatter + Coherencia
-**Fecha:** pendiente
-**Estado:** ⏳ Planificado
-**Objetivo:** ¿Mejora la coherencia la separación Cotton-Tomato?
-
-### Hipótesis
-La coherencia temporal distingue mejor Cotton de Tomato
-en épocas 0-25 donde el backscatter no los separa.
-
-### Configuración prevista
-- Features: VV + VH + COH_VV + COH_VH (4 canales)
-- Baseline coherencia: 6 días
-- Resto igual que EXP-001
