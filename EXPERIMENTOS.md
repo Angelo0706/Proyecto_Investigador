@@ -20,6 +20,55 @@
 2. No se implementa SVM
 3. Variante propia: Margen Relativo MSE (base=0.20, 2do=0.30)
 
+### Evaluación de parcelas fiables sobre TEST
+
+#### Estadísticas generales
+- Píxeles de test: 568.967
+- Parcelas de test: 1.777
+- Clases evaluadas: 16
+- Fiables según CAE: 1.240 (69.8% del total)
+- Fiables según RF: 1.592 (89.6% del total)
+- Intersección CAE ∩ RF: 1.226 (69.0% del total)
+- Solo CAE: 14 parcelas
+- Solo RF: 366 parcelas
+- De las fiables CAE, aceptadas también por RF: 98.9%
+
+#### Desglose por clase
+| Clase       | Total | CAE  | RF   | Intersección | Solo CAE | Nota         |
+|-------------|-------|------|------|--------------|----------|--------------|
+| Alfalfa     | 40    | 32   | 34   | 31           | 1        |              |
+| Carrot      | 36    | 22   | 21   | 19           | 3        |              |
+| Chickpea    | 14    | 1    | 5    | 1            | 0        | ⚠️ excluida  |
+| Cotton      | 662   | 575  | 625  | 571          | 4        |              |
+| Fallow      | 37    | 10   | 16   | 9            | 1        |              |
+| Maize       | 85    | 66   | 71   | 65           | 1        |              |
+| Onion       | 29    | 10   | 15   | 9            | 1        |              |
+| Pepper      | 17    | 1    | 11   | 0            | 1        | ⚠️ excluida  |
+| Potato      | 9     | 1    | 5    | 1            | 0        | ⚠️ excluida  |
+| Pumpkin     | 13    | 4    | 7    | 4            | 0        | ⚠️ excluida  |
+| Quinoa      | 17    | 7    | 17   | 7            | 0        |              |
+| SugarBeet   | 270   | 224  | 263  | 224          | 0        |              |
+| Sunflower   | 69    | 49   | 57   | 48           | 1        |              |
+| SweetPotato | 20    | 5    | 14   | 4            | 1        | ⚠️ excluida  |
+| Tomato      | 408   | 200  | 384  | 200          | 0        |              |
+| Wheat       | 51    | 33   | 47   | 33           | 0        |              |
+
+#### Clases excluidas del experimento (< 5 parcelas en intersección)
+- Chickpea: 1 parcela
+- Pepper: 0 parcelas
+- Potato: 1 parcela
+- Pumpkin: 4 parcelas
+- SweetPotato: 4 parcelas
+
+#### Observaciones sobre parcelas fiables
+- Cotton domina el dataset (662 parcelas, 37% del total)
+- Tomato: solo 200/408 parcelas fiables según CAE (49%) vs 384/408 según RF (94%)
+  → El CAE es mucho más restrictivo con Tomato → explica los FP en validación
+- Pepper: 0 parcelas en intersección → completamente excluida
+- RF acepta el 98.9% de las parcelas que acepta el CAE → alta concordancia
+- Archivo guardado: fiables_interseccion_v1.npz
+  (CAE: 1240, RF: 1592, Intersección final usada: 1216)
+
 ### Resultados completos
 
 #### CAE
@@ -91,8 +140,10 @@
 
 #### Observaciones generales
 - Cotton-Tomato: solapamiento SAR épocas 0-25 explica FP altos en CAE
-- Tomato: pierde 81% de píxeles en purga iterativa
+- Tomato: solo 49% de parcelas fiables según CAE vs 94% según RF →
+  el CAE penaliza fuertemente a Tomato en la purga iterativa
 - Diferencia metodológica (TEST separado) explica el gap de precisión
   en niveles bajos y el mejor recall en niveles altos
+
 
 
